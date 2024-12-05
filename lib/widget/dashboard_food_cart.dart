@@ -21,6 +21,7 @@ class DashboardFoodCart extends StatelessWidget {
                 imageUrl,
                 height: 100,
                 width: 100,
+                fit: BoxFit.cover,
               ),
             ),
             Text(
