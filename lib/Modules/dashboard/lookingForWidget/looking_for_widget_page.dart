@@ -1,51 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widget/dashboard_food_cart.dart';
 
+
 class LookingForWidgetPage extends StatelessWidget {
-   LookingForWidgetPage({super.key});
-  var dataArray= [
-    {
-      "url":"https://media.istockphoto.com/id/171579643/photo/tomato-greenhouse.jpg?s=1024x1024&w=is&k=20&c=kFi-7YRjDfBTcPgSkCdppZVznCUHEfrU_mvjZii5UhI=",
-      "title":"Tomato"
-    },
-    {
-      "url":"https://media.istockphoto.com/id/692951090/photo/organic-potatoes-on-rustic-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=5wy5PVTtYCu0gtTOIM28NVlG27NeT-A0d09FXamzlWs=",
-      "title":"Potato"
-    },
-    {
-      "url":"https://media.istockphoto.com/id/1371203923/photo/close-up-of-cauliflower-on-table.webp?a=1&b=1&s=612x612&w=0&k=20&c=DN5buiVXEuXZAmyZ_XI4LjQmecseMbqQtqfNC_Qx8q0=",
-      "title":"Cauliflower"
-    },
-    {
-      "url":"https://media.istockphoto.com/id/526490997/photo/fresh-carrots-on-black-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=OkK6msbWElWVDLruo64esLifA16n4-d7xCnpJoeOvf8=",
-      "title":"Carrot"
-    },
-  ];
+  LookingForWidgetPage({super.key});
+  var dataArray= [{
+    "url":"https://plus.unsplash.com/premium_photo-1669906333449-5fc2c47cd8ec?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "title":"Tomato"
+  },
+  {
+    "url":"https://images.unsplash.com/photo-1613743983303-b3e89f8a2b80?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "title":"Cauli"
+  },{
+     "url":"https://plus.unsplash.com/premium_photo-1724256031338-b5bfba816cfd?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "title":"Potato"
+  },
+  {
+     "url":"https://plus.unsplash.com/premium_photo-1724849305142-498abc1f7b89?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "title":"Carrot"
+  }];
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           "What are you looking for?",
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.teal,
             fontWeight: FontWeight.bold,
           ),
         ),
-        Expanded(
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (ctx,index){
-              final data = dataArray[index];
-              return DashboardFoodCart(
-                imageUrl: data ['url'] ?? "",
-                title: data['title']?? "N/A",
-              );
-            },
-            itemCount: 4,
+        const SizedBox(
+          height: 5,
+        ),
+        GridView.builder(
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 100,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            childAspectRatio: 0.8,
           ),
-        )
+          shrinkWrap: true,
+          itemBuilder: (ctx,index){
+            final data=dataArray[index];
+            return DashboardFoodCart(
+              imageUrl: data['url'] ?? "",
+              title: data['title'] ?? "N/A",
+              );
+          },
+          itemCount: dataArray.length,
+        ),
       ],
     );
   }
