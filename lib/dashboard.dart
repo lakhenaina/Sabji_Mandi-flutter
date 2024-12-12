@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Modules/dashboard/freshVegetable/fresh_vegetable.dart';
 import 'package:flutter_application_1/Modules/dashboard/lookingForWidget/looking_for_widget_page.dart';
 import 'package:flutter_application_1/Modules/dashboard/promos/promos_card.dart';
 
@@ -8,12 +9,12 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 225, 246, 240),
+      backgroundColor: const Color.fromARGB(255, 196, 244, 230),
          appBar: AppBar(
-          leading: Icon(
+          leading: const Icon(
             Icons.shopping_cart,
           ),
-          title: Text(
+          title: const Text(
             "Sabji Mandi Nepal",
             style: TextStyle(
               color: Colors.white,
@@ -29,20 +30,32 @@ class Dashboard extends StatelessWidget {
               )
             ],
          ),
-         body: Padding(
-          padding:  EdgeInsets.symmetric(
-          horizontal: 10,
-          vertical: 10,
+         
+         body: SingleChildScrollView(
+          physics:const BouncingScrollPhysics(),
+           padding: const EdgeInsets.symmetric(
+                horizontal: 10,
+                vertical: 10,
+              ),
+           child: Column(
+             crossAxisAlignment: CrossAxisAlignment.stretch,
+             children: [
+               LookingForWidgetPage(),
+               const SizedBox(height: 10),
+               const PromosCard(),
+               const Text(
+                "Fresh Vegetables",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.start,
+               ),
+               const SizedBox(height: 10),
+                FreshVegetable(),
+             ],
+           ),
          ),
-          
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              LookingForWidgetPage(),
-              const SizedBox(height: 10),
-              PromosCard()
-            ],
-          )),
     );
   }
 }

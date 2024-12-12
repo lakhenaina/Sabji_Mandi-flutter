@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widget/dashboard_food_cart.dart';
 
 
+// ignore: must_be_immutable
 class LookingForWidgetPage extends StatelessWidget {
   LookingForWidgetPage({super.key});
   var dataArray= [{
@@ -25,9 +26,9 @@ class LookingForWidgetPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           "What are you looking for?",
-          style: const TextStyle(
+          style: TextStyle(
             color: Colors.teal,
             fontWeight: FontWeight.bold,
           ),
@@ -36,13 +37,20 @@ class LookingForWidgetPage extends StatelessWidget {
           height: 5,
         ),
         GridView.builder(
-          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 10,
+            vertical: 10,
+          ),
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 100,
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
             childAspectRatio: 0.8,
           ),
+          //build all child at frist and align height after calculation
           shrinkWrap: true,
+          //restrict scroll feature
+          physics:const NeverScrollableScrollPhysics(),
           itemBuilder: (ctx,index){
             final data=dataArray[index];
             return DashboardFoodCart(
