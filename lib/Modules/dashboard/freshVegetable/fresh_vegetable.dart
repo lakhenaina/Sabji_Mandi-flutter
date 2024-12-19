@@ -33,11 +33,20 @@ class FreshVegetable extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (ctx, index){
         final sabji = dataArray[index];
-        return FreshVegetableCard(
-          title: sabji ['title'] ?? '',
-          imageUrl: sabji ["url"] ?? '',
-          price: "200",
-          unit: "kg",
+        return InkWell(
+          onTap: () {
+            Navigator.pushNamed(
+              context,
+               "/product/details",
+               arguments: sabji,
+            );
+          },
+          child: FreshVegetableCard(
+            title: sabji ['title'] ?? '',
+            imageUrl: sabji ["url"] ?? '',
+            price: "200",
+            unit: "kg",
+          ),
         );
       },
       itemCount: dataArray.length,

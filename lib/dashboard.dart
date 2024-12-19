@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Modules/dashboard/freshVegetable/fresh_vegetable.dart';
 import 'package:flutter_application_1/Modules/dashboard/lookingForWidget/looking_for_widget_page.dart';
 import 'package:flutter_application_1/Modules/dashboard/promos/promos_card.dart';
+import 'package:flutter_application_1/widget/button_with_text_vertically.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -71,27 +72,21 @@ class Dashboard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                IconButton(
-                  onPressed: (){},
-                  icon: const Icon(
-                    Icons.home,
-                    color: Colors.white,
-                  ),
-                ),
-                IconButton(
-                  onPressed: (){},
-                  icon: const Icon(
-                    Icons.people,
-                    color: Colors.white,
-                  ),
-                ),
-                 IconButton(
-                  onPressed: (){},
-                  icon: const Icon(
-                    Icons.whatshot,
-                    color: Colors.white,
-                  ),
-                 ),
+             ButtonWithTextVertically(
+              title: "Home",
+              icon: Icons.home,
+             ),
+
+              ButtonWithTextVertically(
+              title: "Profile",
+              icon: Icons.people,
+             ),
+              ButtonWithTextVertically(
+              title: "News",
+              icon: Icons.whatshot,
+             ),
+             
+               
               ],
             ),
           ),
